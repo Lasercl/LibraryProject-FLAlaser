@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import database.Database;
 import model.artwork.Artwork;
 import model.author.Author;
 import model.book.Book;
@@ -11,6 +12,8 @@ import model.computerfile.ComputerFile;
 public class Main {
 
         public Main() {
+        		Database instance = Database.getInstance();
+        	
                 Scanner scanner = new Scanner(System.in);
 
                 ArrayList<Book> bookData = new ArrayList<>();
