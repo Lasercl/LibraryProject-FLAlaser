@@ -11,7 +11,6 @@ public class ComputerFile extends Bibliography{
         super(title, author, subject);
         this.dateCreated = dateCreated;
         this.format = format;
-        this.fileSize = fileSize;
         this.pdf=pdf;
     }
     
@@ -23,9 +22,7 @@ public class ComputerFile extends Bibliography{
         return format;
     }
     
-    public double getFileSize() {
-    	return fileSize;
-    }
+    
     
     public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
@@ -35,9 +32,7 @@ public class ComputerFile extends Bibliography{
         this.format = format;
     }
 
-    public void setFileSize(double fileSize) {
-    	this.fileSize = fileSize;
-    }
+    
 }
 
 

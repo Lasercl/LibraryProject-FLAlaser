@@ -1,11 +1,21 @@
 package model.computerfile;
 
 public class Word {
-	String type;
 
-	public Word(String type) {
+	private double fileSize;
+
+	public Word(double fileSize) {
 		super();
-		this.type = type;
+		this.fileSize = fileSize;
 	}
+
+	public double getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(double fileSize) {
+		this.fileSize = fileSize;
+	}
+	
 	
 }

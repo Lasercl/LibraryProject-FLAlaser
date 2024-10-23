@@ -1,12 +1,19 @@
 package model.computerfile;
 
 public class Pdf{
-	private String type;
-    private double fileSize;
-
-	public Pdf(String type) {
+	private double fileSize;
+	public Pdf( double fileSize) {
 		super();
-		this.type = type;
+		this.fileSize = fileSize;
 	}
+	
+	public double getFileSize() {
+		return fileSize;
+	}
+	public void setFileSize(double fileSize) {
+		this.fileSize = fileSize;
+	}
+
+	
 	
 }
