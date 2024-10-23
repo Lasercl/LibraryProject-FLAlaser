@@ -3,24 +3,33 @@ package model.book;
 import model.author.Author;
 import model.bibliography.Bibliography;
 
-public class Book extends Bibliography{
+public abstract class Book extends Bibliography{
 	private String bookID;
     private int yearPublish;
     private String publisher;
     private String edition;
     private int page;
-    
+    private String genre;
     public Book(String title, Author author, String subject, String bookID, int yearPublish, String publisher,
-			String edition, int page) {
+			String edition, int page, String genre) {
 		super(title, author, subject);
 		this.bookID = bookID;
 		this.yearPublish = yearPublish;
 		this.publisher = publisher;
 		this.edition = edition;
 		this.page = page;
+		this.genre=genre;
 	}
 	
-    public String getBookID() {
+    public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getBookID() {
 		return bookID;
 	}
 	
