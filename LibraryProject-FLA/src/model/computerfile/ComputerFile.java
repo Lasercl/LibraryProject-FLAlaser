@@ -6,13 +6,13 @@ import model.bibliography.Bibliography;
 public class ComputerFile extends Bibliography{
 	private String dateCreated;
     private String format;
-    private double fileSize;
-    
-    public ComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize){
+    private Pdf pdf;
+    public ComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize,Pdf pdf){
         super(title, author, subject);
         this.dateCreated = dateCreated;
         this.format = format;
         this.fileSize = fileSize;
+        this.pdf=pdf;
     }
     
     public String getDateCreated() {

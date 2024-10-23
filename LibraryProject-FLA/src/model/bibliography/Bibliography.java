@@ -2,7 +2,7 @@ package model.bibliography;
 
 import model.author.Author;
 
-public class Bibliography {
+public abstract class Bibliography {
     private String title;
     private Author author;
     private String subject;
