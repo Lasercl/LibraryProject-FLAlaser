@@ -6,12 +6,15 @@ import model.bibliography.Bibliography;
 public class ComputerFile extends Bibliography{
 	private String dateCreated;
     private String format;
-    private Pdf pdf;
-    public ComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize,Pdf pdf){
+    double fileSize;
+    
+//    private Pdf pdf;
+    public ComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize){
         super(title, author, subject);
         this.dateCreated = dateCreated;
         this.format = format;
-        this.pdf=pdf;
+        this.fileSize = fileSize;
+//        this.pdf=pdf;
     }
     
     public String getDateCreated() {
@@ -24,7 +27,15 @@ public class ComputerFile extends Bibliography{
     
     
     
-    public void setDateCreated(String dateCreated) {
+    public double getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(double fileSize) {
+		this.fileSize = fileSize;
+	}
+
+	public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 

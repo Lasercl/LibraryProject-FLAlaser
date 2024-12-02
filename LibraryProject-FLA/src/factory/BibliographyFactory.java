@@ -23,14 +23,14 @@ public class BibliographyFactory {
 		Artwork art=newArt.createArtwork(title, author, subject, year, artType, artStyle, artMovement);
 		return art;
 	}
-	public Bibliography makeComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize,Pdf pdf) {
+	public Bibliography makeComputerFilePdf(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
 		ComputerFileFactory newCf=new ComputerFileFactory();
-		ComputerFile cf=newCf.createCf(title, author, subject, dateCreated, format, fileSize, pdf);
+		ComputerFile cf=newCf.createCfPdf(title, author, subject, dateCreated, format, fileSize);
 		return cf;
 	}
-	public Bibliography makeComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize,Word word) {
+	public Bibliography makeComputerFileWord(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
 		ComputerFileFactory newCf=new ComputerFileFactory();
-		ComputerFile cf=newCf.createCf(title, author, subject, dateCreated, format, fileSize, word);
+		ComputerFile cf=newCf.createCfWord(title, author, subject, dateCreated, format, fileSize);
 		return cf;
 	}
 	

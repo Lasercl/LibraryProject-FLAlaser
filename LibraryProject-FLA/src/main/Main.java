@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import database.Database;
 import factory.BookFactory;
+import factory.ComputerFileFactory;
 import model.artwork.Artwork;
 import model.author.Author;
 import model.book.Book;
@@ -15,6 +16,7 @@ public class Main {
         public Main() {
         		Database instance = Database.getInstance();
         		BookFactory BF = new BookFactory();
+        		ComputerFileFactory CFF = new ComputerFileFactory();
         	
                 Scanner scanner = new Scanner(System.in);
 
@@ -120,7 +122,7 @@ public class Main {
                                                         System.out.print("Insert Date Modified : ");
                                                         String dateCreated = scanner.nextLine();
 
-                                                        System.out.print("Insert File Format : ");
+                                                        System.out.print("Insert File Format [Word/Pdf]: ");
                                                         String format = scanner.nextLine();
 
                                                         System.out.print("Insert File Size : ");
@@ -128,8 +130,19 @@ public class Main {
                                                         scanner.nextLine();
 
                                                         insertAuthor = new Author(authorName, dob, country);
-                                                        ComputerFile insertComp = new ComputerFile(title, insertAuthor,
-                                                                        subject, dateCreated, format, fileSize);
+//                                                        ComputerFile insertComp = new ComputerFile(title, insertAuthor,
+//                                                                        subject, dateCreated, format, fileSize);
+                                                        
+                                                        ComputerFile insertComp = null;
+                                                        
+                                                        if(format.equalsIgnoreCase("word")) {
+                                                        	insertComp = CFF.createCfPdf(title, insertAuthor, subject, dateCreated, format, fileSize);
+                                                        }
+                                                        else if(format.equalsIgnoreCase("pdf")) {
+                                                        	insertComp = CFF.createCfWord(title, insertAuthor, subject, dateCreated, format, fileSize);
+                                                        }
+                                                        
+                                                        
 
                                                         compData.add(insertComp);
                                                         authorData.add(insertAuthor);

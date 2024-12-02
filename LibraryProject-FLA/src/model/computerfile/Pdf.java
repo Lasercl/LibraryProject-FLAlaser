@@ -1,10 +1,11 @@
 package model.computerfile;
 
-public class Pdf{
-	private double fileSize;
-	public Pdf( double fileSize) {
-		super();
-		this.fileSize = fileSize;
+import model.author.Author;
+
+public class Pdf extends ComputerFile{
+	
+	public Pdf(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
+		super(title, author, subject, dateCreated, format, fileSize);
 	}
 	
 	public double getFileSize() {
