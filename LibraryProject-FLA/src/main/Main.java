@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import database.Database;
+import factory.BookFactory;
 import model.artwork.Artwork;
 import model.author.Author;
 import model.book.Book;
@@ -13,6 +14,7 @@ public class Main {
 
         public Main() {
         		Database instance = Database.getInstance();
+        		BookFactory BF = new BookFactory();
         	
                 Scanner scanner = new Scanner(System.in);
 
@@ -94,10 +96,15 @@ public class Main {
                                                         System.out.print("Insert Total Page : ");
                                                         int page = scanner.nextInt();
                                                         scanner.nextLine();
+                                                        
+                                                        System.out.println("Insert Genre [Romance / Horror / Comedy]:");
+                                                        String genre = scanner.nextLine();
 
                                                         Author insertAuthor = new Author(authorName, dob, country);
-                                                        Book insertBook = new Book(title, insertAuthor, subject, bookID,
-                                                                        yearPublish, publisher, edition, page);
+//                                                        Book insertBook = new Book(title, insertAuthor, subject, bookID,
+//                                                                        yearPublish, publisher, edition, page);
+                                                        
+                                                        Book insertBook = BF.createBook(title, insertAuthor, subject, bookID, yearPublish, publisher, edition, page, genre);
 
                                                         bookData.add(insertBook);
                                                         authorData.add(insertAuthor);
