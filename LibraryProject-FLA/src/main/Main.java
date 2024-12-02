@@ -597,10 +597,15 @@ public class Main {
                                                                         authorData.get(authorIndex)
                                                                                         .setAuthorName(country);
 
-                                                                        Book updateBook = new Book(title,
-                                                                                        authorData.get(authorIndex),
-                                                                                        subject, bookID, yearPublish,
-                                                                                        publisher, edition, page);
+//                                                                        Book updateBook = new Book(title,
+//                                                                                        authorData.get(authorIndex),
+//                                                                                        subject, bookID, yearPublish,
+//                                                                                        publisher, edition, page);
+                                                                        
+                                                                     // Fetch the current genre from the book being updated
+                                                                        String currentGenre = bookData.get(up1 - 1).getGenre(); // Assuming `getGenre()` exists
+                                                                        
+                                                                        Book updateBook = BF.createBook(title, authorData.get(authorIndex), subject, bookID, yearPublish, publisher, edition, page, currentGenre);
                                                                         bookData.set(up1 - 1, updateBook);
 
                                                                         input5 = 4;
