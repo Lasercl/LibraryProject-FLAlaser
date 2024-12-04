@@ -23,22 +23,21 @@ public class BibliographyFactory {
 		Artwork art=newArt.createArtwork(title, author, subject, year, artType, artStyle, artMovement);
 		return art;
 	}
-<<<<<<< HEAD
 	public Bibliography makeComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
 		ComputerFileFactory newCf=new ComputerFileFactory();
 		ComputerFile cf=newCf.createCf(title, author, subject, dateCreated, format, fileSize);
-=======
-	public Bibliography makeComputerFilePdf(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
-		ComputerFileFactory newCf=new ComputerFileFactory();
-		ComputerFile cf=newCf.createCfPdf(title, author, subject, dateCreated, format, fileSize);
 		return cf;
 	}
-	public Bibliography makeComputerFileWord(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
-		ComputerFileFactory newCf=new ComputerFileFactory();
-		ComputerFile cf=newCf.createCfWord(title, author, subject, dateCreated, format, fileSize);
->>>>>>> 0afd445fe4789df678d4e5740a347f866b83b4e8
-		return cf;
-	}
+//	public Bibliography makeComputerFilePdf(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
+//		ComputerFileFactory newCf=new ComputerFileFactory();
+//		ComputerFile cf=newCf.createCfPdf(title, author, subject, dateCreated, format, fileSize);
+//		return cf;
+//	}
+//	public Bibliography makeComputerFileWord(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
+//		ComputerFileFactory newCf=new ComputerFileFactory();
+//		ComputerFile cf=newCf.createCfWord(title, author, subject, dateCreated, format, fileSize);
+//		return cf;
+//	}
 //	public Bibliography makeComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize,Word word) {
 //		ComputerFileFactory newCf=new ComputerFileFactory();
 //		ComputerFile cf=newCf.createCf(title, author, subject, dateCreated, format, fileSize, word);
