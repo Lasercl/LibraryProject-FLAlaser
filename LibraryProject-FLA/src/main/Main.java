@@ -5,7 +5,11 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import database.Database;
+<<<<<<< HEAD
 import factory.BibliographyFactory;
+=======
+import factory.BookFactory;
+>>>>>>> 0afd445fe4789df678d4e5740a347f866b83b4e8
 import factory.ComputerFileFactory;
 import model.artwork.Artwork;
 import model.author.Author;
@@ -16,8 +20,15 @@ import model.computerfile.ComputerFile;
 public class Main {
 
         public Main() {
+<<<<<<< HEAD
                 Database instance = Database.getInstance();
                 boolean flag;
+=======
+        		Database instance = Database.getInstance();
+        		BookFactory BF = new BookFactory();
+        		ComputerFileFactory CFF = new ComputerFileFactory();
+        	
+>>>>>>> 0afd445fe4789df678d4e5740a347f866b83b4e8
                 Scanner scanner = new Scanner(System.in);
 
 //                ArrayList<Book> bookData = new ArrayList<>();
@@ -98,10 +109,21 @@ public class Main {
                                                         System.out.print("Insert Total Page : ");
                                                         int page = scanner.nextInt();
                                                         scanner.nextLine();
+                                                        
+                                                        System.out.println("Insert Genre [Romance / Horror / Comedy]:");
+                                                        String genre = scanner.nextLine();
 
                                                         Author insertAuthor = new Author(authorName, dob, country);
 //                                                        Book insertBook = new Book(title, insertAuthor, subject, bookID,
 //                                                                        yearPublish, publisher, edition, page);
+<<<<<<< HEAD
+=======
+                                                        
+                                                        Book insertBook = BF.createBook(title, insertAuthor, subject, bookID, yearPublish, publisher, edition, page, genre);
+
+                                                        bookData.add(insertBook);
+                                                        authorData.add(insertAuthor);
+>>>>>>> 0afd445fe4789df678d4e5740a347f866b83b4e8
 
                                                         BibliographyFactory b=new BibliographyFactory();
                                                         Bibliography newBli=b.makeBook(title, insertAuthor, subject, bookID, yearPublish, publisher, edition, page, country);
@@ -120,7 +142,7 @@ public class Main {
                                                         System.out.print("Insert Date Modified : ");
                                                         String dateCreated = scanner.nextLine();
 
-                                                        System.out.print("Insert File Format : ");
+                                                        System.out.print("Insert File Format [Word/Pdf]: ");
                                                         String format = scanner.nextLine();
 
                                                         System.out.print("Insert File Size : ");
@@ -130,11 +152,29 @@ public class Main {
                                                         insertAuthor = new Author(authorName, dob, country);
 //                                                        ComputerFile insertComp = new ComputerFile(title, insertAuthor,
 //                                                                        subject, dateCreated, format, fileSize);
+<<<<<<< HEAD
                                                         BibliographyFactory blibi=new BibliographyFactory();
                                                         Bibliography newBi=blibi.makeComputerFile(title, insertAuthor, subject, dateCreated, format, fileSize);
 //                                                        compData.add(insertComp);
 //                                                        authorData.add(insertAuthor);
                                                         biData.add(newBi);
+=======
+                                                        
+                                                        ComputerFile insertComp = null;
+                                                        
+                                                        if(format.equalsIgnoreCase("word")) {
+                                                        	insertComp = CFF.createCfPdf(title, insertAuthor, subject, dateCreated, format, fileSize);
+                                                        }
+                                                        else if(format.equalsIgnoreCase("pdf")) {
+                                                        	insertComp = CFF.createCfWord(title, insertAuthor, subject, dateCreated, format, fileSize);
+                                                        }
+                                                        
+                                                        
+
+                                                        compData.add(insertComp);
+                                                        authorData.add(insertAuthor);
+
+>>>>>>> 0afd445fe4789df678d4e5740a347f866b83b4e8
                                                         input2 = 4;
 
                                                         System.out.println();
@@ -624,10 +664,15 @@ public class Main {
                                                                         authorData.get(authorIndex)
                                                                                         .setAuthorName(country);
 
-                                                                        Book updateBook = new Book(title,
-                                                                                        authorData.get(authorIndex),
-                                                                                        subject, bookID, yearPublish,
-                                                                                        publisher, edition, page);
+//                                                                        Book updateBook = new Book(title,
+//                                                                                        authorData.get(authorIndex),
+//                                                                                        subject, bookID, yearPublish,
+//                                                                                        publisher, edition, page);
+                                                                        
+                                                                     // Fetch the current genre from the book being updated
+                                                                        String currentGenre = bookData.get(up1 - 1).getGenre(); // Assuming `getGenre()` exists
+                                                                        
+                                                                        Book updateBook = BF.createBook(title, authorData.get(authorIndex), subject, bookID, yearPublish, publisher, edition, page, currentGenre);
                                                                         bookData.set(up1 - 1, updateBook);
 
                                                                         input5 = 4;
