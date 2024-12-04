@@ -2,10 +2,14 @@ package model.computerfile;
 
 import model.author.Author;
 
-public class Word extends ComputerFile {
+public class Word {
 
-	public Word(String title, Author author, String subject, String dateCreated, String format, double fileSize) {
-		super(title, author, subject, dateCreated, format, fileSize);
+	
+	private double fileSize;
+	
+	public Word(double fileSize) {
+		super();
+		this.fileSize = fileSize;
 	}
 
 	public double getFileSize() {

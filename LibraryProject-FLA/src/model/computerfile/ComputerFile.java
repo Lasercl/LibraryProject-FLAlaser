@@ -9,13 +9,11 @@ public class ComputerFile extends Bibliography{
     double fileSize;
     
     private Pdf pdf;
-    public ComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize){
+    public ComputerFile(String title, Author author, String subject, String dateCreated, String format, Pdf pdf){
         super(title, author, subject);
         this.dateCreated = dateCreated;
         this.format = format;
-//        this.pdf=pdf;
-        this.fileSize = fileSize;
-//        this.pdf=pdf;
+        this.pdf=pdf;
     }
     
     public String getDateCreated() {

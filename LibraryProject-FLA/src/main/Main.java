@@ -1,13 +1,16 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import database.Database;
+import factory.BibliographyFactory;
 import factory.BookFactory;
 import factory.ComputerFileFactory;
 import model.artwork.Artwork;
 import model.author.Author;
+import model.bibliography.Bibliography;
 import model.book.Book;
 import model.computerfile.ComputerFile;
 
@@ -17,14 +20,15 @@ public class Main {
         		Database instance = Database.getInstance();
         		BookFactory BF = new BookFactory();
         		ComputerFileFactory CFF = new ComputerFileFactory();
-        	
+        		boolean flag;
                 Scanner scanner = new Scanner(System.in);
 
-                ArrayList<Book> bookData = new ArrayList<>();
-                ArrayList<ComputerFile> compData = new ArrayList<>();
-                ArrayList<Artwork> artData = new ArrayList<>();
-                ArrayList<Author> authorData = new ArrayList<>();
-
+//                ArrayList<Book> bookData = new ArrayList<>();
+//                ArrayList<ComputerFile> compData = new ArrayList<>();
+//                ArrayList<Artwork> artData = new ArrayList<>();
+//                ArrayList<Author> authorData = new ArrayList<>();
+//                
+                ArrayList<Bibliography>biData= instance.getInstance().getBiData();
                 int input, input2, input3, input4, input5;
 
                 do {
@@ -106,11 +110,12 @@ public class Main {
 //                                                        Book insertBook = new Book(title, insertAuthor, subject, bookID,
 //                                                                        yearPublish, publisher, edition, page);
                                                         
-                                                        Book insertBook = BF.createBook(title, insertAuthor, subject, bookID, yearPublish, publisher, edition, page, genre);
-
-                                                        bookData.add(insertBook);
-                                                        authorData.add(insertAuthor);
-
+//                                                        Book insertBook = BF.createBook(title, insertAuthor, subject, bookID, yearPublish, publisher, edition, page, genre);
+                                                        BibliographyFactory bi=new BibliographyFactory(); 
+                                                        Bibliography newBi=bi.makeBook(title, insertAuthor, subject, bookID, yearPublish, publisher, edition, page, genre);
+//                                                        bookData.add(insertBook);
+//                                                        authorData.add(insertAuthor);
+                                                        biData.add(newBi);
                                                         input2 = 4;
 
                                                         System.out.println();
@@ -133,19 +138,17 @@ public class Main {
 //                                                        ComputerFile insertComp = new ComputerFile(title, insertAuthor,
 //                                                                        subject, dateCreated, format, fileSize);
                                                         
-                                                        ComputerFile insertComp = null;
+//                                                        ComputerFile insertComp = null;
                                                         
-                                                        if(format.equalsIgnoreCase("word")) {
-                                                        	insertComp = CFF.createCfPdf(title, insertAuthor, subject, dateCreated, format, fileSize);
-                                                        }
-                                                        else if(format.equalsIgnoreCase("pdf")) {
-                                                        	insertComp = CFF.createCfWord(title, insertAuthor, subject, dateCreated, format, fileSize);
-                                                        }
-                                                        
-                                                        
-
-                                                        compData.add(insertComp);
-                                                        authorData.add(insertAuthor);
+//                                                        if(format.equalsIgnoreCase("word")) {
+//                                                        	insertComp = CFF.createCfPdf(title, insertAuthor, subject, dateCreated, format, fileSize);
+//                                                        }
+//                                                        else if(format.equalsIgnoreCase("pdf")) {
+//                                                        	insertComp = CFF.createCfWord(title, insertAuthor, subject, dateCreated, format, fileSize);
+//                                                        }
+                                                        BibliographyFactory biCompf=new BibliographyFactory();
+                                                        Bibliography newCompf=biCompf.makeComputerFile(title, insertAuthor, subject, dateCreated, format, fileSize);
+                                                        biData.add(newCompf);
 
                                                         input2 = 4;
 
@@ -169,12 +172,15 @@ public class Main {
                                                         String artMovement = scanner.nextLine();
 
                                                         insertAuthor = new Author(authorName, dob, country);
-                                                        Artwork insertArt = new Artwork(title, insertAuthor, subject,
-                                                                        year, artType, artStyle,
-                                                                        artMovement);
-
-                                                        artData.add(insertArt);
-                                                        authorData.add(insertAuthor);
+//                                                        Artwork insertArt = new Artwork(title, insertAuthor, subject,
+//                                                                        year, artType, artStyle,
+//                                                                        artMovement);
+//
+//                                                        artData.add(insertArt);
+//                                                        authorData.add(insertAuthor);
+                                                        BibliographyFactory biArtwork=new BibliographyFactory();
+                                                        Bibliography newArtwork=biArtwork.makeArtwork(title, insertAuthor, subject, year, artType, artStyle, artMovement);
+                                                        biData.add(newArtwork);
 
                                                         input2 = 4;
 
@@ -203,7 +209,14 @@ public class Main {
 
                                                 switch (input5) {
                                                         case 1:
-                                                                if (bookData.isEmpty()) {
+                                                        		for (int i = 0; i < biData.size(); i++) {
+																	if(biData.get(i) instanceof Book) {
+																		flag=true;
+																	}else {
+																		flag=false;
+																	}
+																}
+                                                                if (biData.isEmpty()) {
                                                                         System.out.println("No data\n");
                                                                         continue;
                                                                 }
