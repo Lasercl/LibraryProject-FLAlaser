@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.artwork.Artwork;
 import model.author.Author;
+import model.bibliography.Bibliography;
 import model.book.Book;
 import model.computerfile.ComputerFile;
 
@@ -12,7 +13,7 @@ public class Database {
 	private ArrayList<ComputerFile> compData;
 	private ArrayList<Artwork> artData;
 	private ArrayList<Author> authorData;
-	
+	private ArrayList<Bibliography>biData;
 	private static volatile Database instance = null;
 	
 	public static Database getInstance() {
@@ -27,8 +28,14 @@ public class Database {
 		compData = new ArrayList<ComputerFile>();
 		artData = new ArrayList<Artwork>();
 		authorData = new ArrayList<Author>();
+		biData=new ArrayList<Bibliography>();
+	}
+	
+	public ArrayList<Bibliography> getBiData() {
+		return biData;
 	}
 
+	
 	public ArrayList<Book> getBookData() {
 		return bookData;
 	}

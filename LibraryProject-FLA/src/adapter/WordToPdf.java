@@ -1,4 +1,4 @@
-package adapter;
+zpackage adapter;
 
 import model.computerfile.Pdf;
 import model.computerfile.Word;
