@@ -16,11 +16,221 @@ import model.computerfile.ComputerFile;
 
 public class Main {
 
+		public static Database instance = Database.getInstance();
+		public static ArrayList<Bibliography>biData= instance.getInstance().getBiData();
+		public static void displayAll() {
+			displayBook();
+			displayCompf();
+			displayArtwork();
+		}
+		public static void displayArtwork() {
+			String spaces = " ";
+            System.out.println("Artwork Data : ");
+            System.out.println(
+                            "==============================================================="
+                                            +
+                                            "=======================================================================================");
+
+            System.out.printf("|" + spaces.repeat(2) + "%s" +
+                            spaces.repeat(2) + "|"
+                            + spaces.repeat(7) + "%s" +
+                            spaces.repeat(7) + "|"
+                            + spaces.repeat(10) + "%s" +
+                            spaces.repeat(10) + "|"
+                            + spaces.repeat(3) + "%s" +
+                            spaces.repeat(3) + "|"
+                            + spaces.repeat(1) + "%s" +
+                            spaces.repeat(1) + "|"
+                            + spaces.repeat(4) + "%s" +
+                            spaces.repeat(4) + "|"
+                            + spaces.repeat(4) + "%s" +
+                            spaces.repeat(4) + "|"
+                            + spaces.repeat(4) + "%s" +
+                            spaces.repeat(4) + "|\n", "No", "Title",
+                            "Author Name",
+                            "Genre", "Year of Publication",
+                            "Art Type", "Art Style",
+                            "Art Movement");
+
+            System.out.println(
+                            "==============================================================="
+                                            +
+                                            "=======================================================================================");
+            for (int i = 0; i < biData.size(); i++) {
+            	if(biData.get(i) instanceof Artwork) {
+                    System.out.printf("|%-6s|%-19s|", i + 1,
+                                    biData.get(i).getTitle());
+                    System.out.printf(
+                                    "%-31s" + "-" + "%-15s" + "-"
+                                                    + "%-15s",
+                                    biData.get(i).getAuthor()
+                                                    .getAuthorName(),
+                                    biData.get(i).getAuthor()
+                                                    .getDateOfBirth(),
+                                    biData.get(i).getAuthor()
+                                                    .getCountry());
+                    Artwork art=(Artwork) biData.get(i);
+                    System.out.printf(
+                                    "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
+                                    biData.get(i).getSubject(),
+                                    art.getYear(),
+                                    art.getArtType(),
+                                    art.getArtStyle(),
+                                    art.getArtMovement());
+            	}
+            }
+
+            for (int i = 0; i < 2; i++) {
+                    System.out.println();
+            }
+
+		}
+		public static void displayCompf() {
+			   System.out.println("Computer File Data : ");
+			   String spaces = " ";
+
+               System.out.println(
+                               "==============================================================="
+                                               +
+                                               "======================================================================================");
+
+               System.out.printf("|" + spaces.repeat(2) + "%s" +
+                               spaces.repeat(2) + "|"
+                               + spaces.repeat(7) + "%s" +
+                               spaces.repeat(7) + "|"
+                               + spaces.repeat(10) + "%s" +
+                               spaces.repeat(10) + "-"
+                               + spaces.repeat(1) + "%s" +
+                               spaces.repeat(1) + "-"
+                               + spaces.repeat(4) + "%s" +
+                               spaces.repeat(4) + "|"
+                               + spaces.repeat(3) + "%s" +
+                               spaces.repeat(3) + "|"
+                               + spaces.repeat(2) + "%s" +
+                               spaces.repeat(2) + "|"
+                               + spaces.repeat(2) + "%s" +
+                               spaces.repeat(2) + "|"
+                               + spaces.repeat(1) + "%s" +
+                               spaces.repeat(1) + "|\n", "No", "Title",
+                               "Author Name", "Date of Birth",
+                               "Country",
+                               "Genre", "File Format", "Date Created",
+                               "File Size");
+
+               System.out.println(
+                               "==============================================================="
+                                               +
+                                               "======================================================================================");
+
+               for (int i = 0; i < biData.size(); i++) {
+               	if(biData.get(i) instanceof ComputerFile) {
+                       System.out.printf("|%-6s|%-19s|", i + 1,
+                                       biData.get(i).getTitle());
+                       System.out.printf(
+                                       "%-31s" + "-" + "%-15s" + "-"
+                                                       + "%-15s",
+                                       biData.get(i).getAuthor()
+                                                       .getAuthorName(),
+                                       biData.get(i).getAuthor()
+                                                       .getDateOfBirth(),
+                                       biData.get(i).getAuthor()
+                                                       .getCountry());
+                       ComputerFile compf1=(ComputerFile) biData.get(i);
+                       System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
+                                       biData.get(i).getSubject(),
+                                       compf1.getFormat(),
+                                       compf1.getDateCreated(),
+                                       compf1.getFileSize());
+               	}
+               }
+
+               for (int i = 0; i < 2; i++) {
+                       System.out.println();
+               }
+
+
+		}
+		public static void displayBook() {
+			System.out.println("Book Data : ");
+            String spaces = " ";
+
+            System.out.println(
+                            "==============================================================="
+                                            +
+                                            "============================================================================"
+                                            +
+                                            "========================");
+
+            System.out.printf("|" + spaces.repeat(2) + "%s" +
+                            spaces.repeat(2) + "|"
+                            + spaces.repeat(7) + "%s" +
+                            spaces.repeat(7) + "|"
+                            + spaces.repeat(10) + "%s" +
+                            spaces.repeat(10) + "-"
+                            + spaces.repeat(1) + "%s" +
+                            spaces.repeat(1) + "-"
+                            + spaces.repeat(4) + "%s" +
+                            spaces.repeat(4) + "|"
+                            + spaces.repeat(3) + "%s" +
+                            spaces.repeat(3) + "|"
+                            + spaces.repeat(2) + "%s" +
+                            spaces.repeat(2) + "|"
+                            + spaces.repeat(2) + "%s" +
+                            spaces.repeat(2) + "|"
+                            + spaces.repeat(3) + "%s" +
+                            spaces.repeat(3) + "|"
+                            + spaces.repeat(3) + "%s" +
+                            spaces.repeat(3) + "|\n", "No", "Title",
+                            "Author Name",
+                            "Date of Birth", "Country",
+                            "Genre", "Book ID", "Year Publish",
+                            "Publisher",
+                            "Edition", "Page");
+
+            System.out.println(
+                            "==============================================================="
+                                            +
+                                            "==========================================================================="
+                                            +
+                                            "=========================");
+            for (int i = 0; i < biData.size(); i++) {
+            	if(biData.get(i) instanceof Book) {
+            		
+            	
+                    System.out.printf("|%-6s|%-19s|", i + 1,
+                                    biData.get(i).getTitle());
+                    System.out.printf(
+                                    "%-31s" + "-" + "%-15s" + "-"
+                                                    + "%-15s",
+                                    biData.get(i).getAuthor()
+                                                    .getAuthorName(),
+                                    biData.get(i).getAuthor()
+                                                    .getDateOfBirth(),
+                                    biData.get(i).getAuthor()
+                                                    .getCountry());
+                    Book book= (Book) biData.get(i);
+
+                    System.out.printf(
+                                    "|%-11s|%-11s|%-16s|%-15s|%-13s|\n",
+                                    biData.get(i).getSubject(),
+                                    book.getBookID(),
+                                    book.getYearPublish(),
+                                    book.getPublisher(),
+                                    book.getEdition(),
+                                    book.getPage());
+            	}
+            }
+
+            for (int i = 0; i < 2; i++) {
+                    System.out.println();
+            }
+
+		}
         public Main() {
-        		Database instance = Database.getInstance();
+        		
         		BookFactory BF = new BookFactory();
         		ComputerFileFactory CFF = new ComputerFileFactory();
-        		boolean flag;
+        		boolean flag=false;
                 Scanner scanner = new Scanner(System.in);
 
 //                ArrayList<Book> bookData = new ArrayList<>();
@@ -28,7 +238,6 @@ public class Main {
 //                ArrayList<Artwork> artData = new ArrayList<>();
 //                ArrayList<Author> authorData = new ArrayList<>();
 //                
-                ArrayList<Bibliography>biData= instance.getInstance().getBiData();
                 int input, input2, input3, input4, input5;
 
                 do {
@@ -212,11 +421,12 @@ public class Main {
                                                         		for (int i = 0; i < biData.size(); i++) {
 																	if(biData.get(i) instanceof Book) {
 																		flag=true;
+																		break;
 																	}else {
 																		flag=false;
 																	}
 																}
-                                                                if (biData.isEmpty()) {
+                                                                if (biData.isEmpty()||flag==false) {
                                                                         System.out.println("No data\n");
                                                                         continue;
                                                                 }
@@ -263,27 +473,32 @@ public class Main {
                                                                                                 "==========================================================================="
                                                                                                 +
                                                                                                 "=========================");
-                                                                for (int i = 0; i < bookData.size(); i++) {
-
+                                                                for (int i = 0; i < biData.size(); i++) {
+                                                                	if(biData.get(i) instanceof Book) {
+                                                                		
+                                                                	
                                                                         System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        bookData.get(i).getTitle());
+                                                                                        biData.get(i).getTitle());
                                                                         System.out.printf(
                                                                                         "%-31s" + "-" + "%-15s" + "-"
                                                                                                         + "%-15s",
-                                                                                        bookData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getAuthorName(),
-                                                                                        bookData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getDateOfBirth(),
-                                                                                        bookData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getCountry());
+                                                                        Book book= (Book) biData.get(i);
+            
                                                                         System.out.printf(
                                                                                         "|%-11s|%-11s|%-16s|%-15s|%-13s|\n",
-                                                                                        bookData.get(i).getSubject(),
-                                                                                        bookData.get(i).getBookID(),
-                                                                                        bookData.get(i).getYearPublish(),
-                                                                                        bookData.get(i).getPublisher(),
-                                                                                        bookData.get(i).getEdition(),
-                                                                                        bookData.get(i).getPage());
+                                                                                        biData.get(i).getSubject(),
+                                                                                        book.getBookID(),
+                                                                                        book.getYearPublish(),
+                                                                                        book.getPublisher(),
+                                                                                        book.getEdition(),
+                                                                                        book.getPage());
+                                                                	}
                                                                 }
 
                                                                 for (int i = 0; i < 2; i++) {
@@ -294,8 +509,8 @@ public class Main {
                                                                 int del1 = scanner.nextInt();
                                                                 scanner.nextLine();
 
-                                                                if (del1 > 0 && del1 <= bookData.size()) {
-                                                                        bookData.remove(del1 - 1);
+                                                                if (del1 > 0 && del1 <= biData.size()) {
+                                                                        biData.remove(del1 - 1);
                                                                         input5 = 4;
                                                                 } else {
                                                                         System.out.println(
@@ -306,10 +521,22 @@ public class Main {
                                                                 break;
 
                                                         case 2:
-                                                                if (compData.isEmpty()) {
-                                                                        System.out.println("No data\n");
-                                                                        continue;
-                                                                }
+	                                                        	for (int i = 0; i < biData.size(); i++) {
+																	if(biData.get(i) instanceof ComputerFile) {
+																		flag=true;
+																		break;
+																	}else {
+																		flag=false;
+																	}
+																}
+	                                                            if (biData.isEmpty()||flag==false) {
+	                                                                    System.out.println("No data\n");
+	                                                                    continue;
+	                                                            }
+//                                                                if (compData.isEmpty()) {
+//                                                                        System.out.println("No data\n");
+//                                                                        continue;
+//                                                                }
 
                                                                 System.out.println("Computer File Data : ");
                                                                 spaces = " ";
@@ -347,24 +574,26 @@ public class Main {
                                                                                                 +
                                                                                                 "======================================================================================");
 
-                                                                for (int i = 0; i < compData.size(); i++) {
-
+                                                                for (int i = 0; i < biData.size(); i++) {
+                                                                	if(biData.get(i) instanceof ComputerFile) {
                                                                         System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        compData.get(i).getTitle());
+                                                                                        biData.get(i).getTitle());
                                                                         System.out.printf(
                                                                                         "%-31s" + "-" + "%-15s" + "-"
                                                                                                         + "%-15s",
-                                                                                        compData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getAuthorName(),
-                                                                                        compData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getDateOfBirth(),
-                                                                                        compData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getCountry());
+                                                                        ComputerFile compf1=(ComputerFile) biData.get(i);
                                                                         System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
-                                                                                        compData.get(i).getSubject(),
-                                                                                        compData.get(i).getFormat(),
-                                                                                        compData.get(i).getDateCreated(),
-                                                                                        compData.get(i).getFileSize());
+                                                                                        biData.get(i).getSubject(),
+                                                                                        compf1.getFormat(),
+                                                                                        compf1.getDateCreated(),
+                                                                                        compf1.getFileSize());
+                                                                	}
                                                                 }
 
                                                                 for (int i = 0; i < 2; i++) {
@@ -376,8 +605,8 @@ public class Main {
                                                                 int del2 = scanner.nextInt();
                                                                 scanner.nextLine();
 
-                                                                if (del2 > 0 && del2 <= compData.size()) {
-                                                                        compData.remove(del2 - 1);
+                                                                if (del2 > 0 && del2 <= biData.size()) {
+                                                                        biData.remove(del2 - 1);
                                                                         input5 = 4;
                                                                 } else {
                                                                         System.out.println(
@@ -388,10 +617,19 @@ public class Main {
                                                                 break;
 
                                                         case 3:
-                                                                if (artData.isEmpty()) {
-                                                                        System.out.println("No data\n");
-                                                                        continue;
-                                                                }
+	                                                        	for (int i = 0; i < biData.size(); i++) {
+																	if(biData.get(i) instanceof Artwork) {
+																		flag=true;
+																		break;
+																	}else {
+																		flag=false;
+																	}
+																}
+	                                                            if (biData.isEmpty()||flag==false) {
+	                                                                    System.out.println("No data\n");
+	                                                                    continue;
+	                                                            }
+                                                                
                                                                 spaces = " ";
                                                                 System.out.println("Artwork Data : ");
                                                                 System.out.println(
@@ -424,26 +662,28 @@ public class Main {
                                                                                 "==============================================================="
                                                                                                 +
                                                                                                 "=======================================================================================");
-                                                                for (int i = 0; i < artData.size(); i++) {
-
+                                                                for (int i = 0; i < biData.size(); i++) {
+                                                                	if(biData.get(i) instanceof Artwork) {
                                                                         System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        artData.get(i).getTitle());
+                                                                                        biData.get(i).getTitle());
                                                                         System.out.printf(
                                                                                         "%-31s" + "-" + "%-15s" + "-"
                                                                                                         + "%-15s",
-                                                                                        artData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getAuthorName(),
-                                                                                        artData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getDateOfBirth(),
-                                                                                        artData.get(i).getAuthor()
+                                                                                        biData.get(i).getAuthor()
                                                                                                         .getCountry());
+                                                                        Artwork art=(Artwork) biData.get(i);
                                                                         System.out.printf(
                                                                                         "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
-                                                                                        artData.get(i).getSubject(),
-                                                                                        artData.get(i).getYear(),
-                                                                                        artData.get(i).getArtType(),
-                                                                                        artData.get(i).getArtStyle(),
-                                                                                        artData.get(i).getArtMovement());
+                                                                                        biData.get(i).getSubject(),
+                                                                                        art.getYear(),
+                                                                                        art.getArtType(),
+                                                                                        art.getArtStyle(),
+                                                                                        art.getArtMovement());
+                                                                	}
                                                                 }
 
                                                                 for (int i = 0; i < 2; i++) {
@@ -454,8 +694,8 @@ public class Main {
                                                                 int del3 = scanner.nextInt();
                                                                 scanner.nextLine();
 
-                                                                if (del3 > 0 && del3 <= artData.size()) {
-                                                                        artData.remove(del3 - 1);
+                                                                if (del3 > 0 && del3 <= biData.size()) {
+                                                                        biData.remove(del3 - 1);
                                                                         input5 = 4;
                                                                 } else {
                                                                         System.out.println(
@@ -484,81 +724,27 @@ public class Main {
 
                                                 switch (input3) {
                                                         case 1:
-                                                                if (bookData.isEmpty()) {
-                                                                        System.out.println("No data\n");
-                                                                        continue;
-                                                                }
+	                                                        	for (int i = 0; i < biData.size(); i++) {
+																	if(biData.get(i) instanceof Book) {
+																		flag=true;
+																		break;
+																	}else {
+																		flag=false;
+																	}
+																}
+	                                                            if (biData.isEmpty()||flag==false) {
+	                                                                    System.out.println("No data\n");
+	                                                                    continue;
+	                                                            }
 
-                                                                System.out.println("Book Data : ");
-                                                                String spaces = " ";
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "====================================================================================================");
-
-                                                                System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(7) + "%s" +
-                                                                                spaces.repeat(7) + "|"
-                                                                                + spaces.repeat(10) + "%s" +
-                                                                                spaces.repeat(10) + "-"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "-"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|\n", "No", "Title",
-                                                                                "Author Name", "Date of Birth",
-                                                                                "Country",
-                                                                                "Genre", "Book ID", "Year Publish",
-                                                                                "Publisher",
-                                                                                "Edition", "Page");
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "====================================================================================================");
-                                                                for (int i = 0; i < bookData.size(); i++) {
-
-                                                                        System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        bookData.get(i).getTitle());
-                                                                        System.out.printf(
-                                                                                        "%-31s" + "-" + "%-15s" + "-"
-                                                                                                        + "%-15s",
-                                                                                        bookData.get(i).getAuthor()
-                                                                                                        .getAuthorName(),
-                                                                                        bookData.get(i).getAuthor()
-                                                                                                        .getDateOfBirth(),
-                                                                                        bookData.get(i).getAuthor()
-                                                                                                        .getCountry());
-                                                                        System.out.printf(
-                                                                                        "|%-11s|%-11s|%-16s|%-15s|%-13s|\n",
-                                                                                        bookData.get(i).getSubject(),
-                                                                                        bookData.get(i).getBookID(),
-                                                                                        bookData.get(i).getYearPublish(),
-                                                                                        bookData.get(i).getPublisher(),
-                                                                                        bookData.get(i).getEdition(),
-                                                                                        bookData.get(i).getPage());
-                                                                }
-
-                                                                for (int i = 0; i < 2; i++) {
-                                                                        System.out.println();
-                                                                }
+//                                                                System.out.println("Book Data : ");
+                                                                displayBook();
 
                                                                 System.out.print("Select Book Data to Update: ");
                                                                 int up1 = scanner.nextInt();
                                                                 scanner.nextLine();
 
-                                                                if (up1 > 0 && up1 <= bookData.size()) {
+                                                                if (up1 > 0 && up1 <= biData.size()) {
                                                                         System.out.println();
                                                                         System.out.println("Book Data : ");
 
@@ -597,23 +783,29 @@ public class Main {
                                                                         country = scanner.nextLine();
 
                                                                         int authorIndex = 0;
-                                                                        for (int i = 0; i < authorData.size(); i++) {
-                                                                                if (bookData.get(up1 - 1)
-                                                                                                .getAuthor() == authorData
-                                                                                                                .get(i)) {
-                                                                                        authorIndex = i;
-                                                                                }
-                                                                        }
-                                                                        authorData.get(authorIndex)
-                                                                                        .setAuthorName(authorName);
-                                                                        authorData.get(authorIndex).setAuthorName(dob);
-                                                                        authorData.get(authorIndex)
-                                                                                        .setAuthorName(country);
-
-                                                                        String currentGenre = bookData.get(up1 - 1).getGenre(); // Assuming `getGenre()` exists
+                                                                        Author updateAuthor = new Author(authorName, dob, country);
+                                                                        BibliographyFactory upBi=new BibliographyFactory();
+                                                                        Bibliography updateBi=upBi.makeBook(title, updateAuthor, subject, bookID, yearPublish, publisher, edition, page, edition);
+                                                                        biData.set(up1-1, updateBi);
                                                                         
-                                                                        Book updateBook = BF.createBook(title, authorData.get(authorIndex), subject, bookID, yearPublish, publisher, edition, page, currentGenre);
-                                                                        bookData.set(up1 - 1, updateBook);
+                                                                        
+//                                                                        for (int i = 0; i < authorData.size(); i++) {
+//                                                                                if (bookData.get(up1 - 1)
+//                                                                                                .getAuthor() == authorData
+//                                                                                                                .get(i)) {
+//                                                                                        authorIndex = i;
+//                                                                                }
+//                                                                        }
+//                                                                        authorData.get(authorIndex)
+//                                                                                        .setAuthorName(authorName);
+//                                                                        authorData.get(authorIndex).setAuthorName(dob);
+//                                                                        authorData.get(authorIndex)
+//                                                                                        .setAuthorName(country);
+//
+//                                                                        String currentGenre = bookData.get(up1 - 1).getGenre(); // Assuming `getGenre()` exists
+//                                                                        
+//                                                                        Book updateBook = BF.createBook(title, authorData.get(authorIndex), subject, bookID, yearPublish, publisher, edition, page, currentGenre);
+//                                                                        bookData.set(up1 - 1, updateBook);
 
                                                                         input5 = 4;
                                                                 } else {
@@ -625,79 +817,27 @@ public class Main {
                                                                 break;
 
                                                         case 2:
-                                                                if (compData.isEmpty()) {
-                                                                        System.out.println("No data\n");
-                                                                        continue;
-                                                                }
+	                                                        	for (int i = 0; i < biData.size(); i++) {
+																	if(biData.get(i) instanceof ComputerFile) {
+																		flag=true;
+																		break;
+																	}else {
+																		flag=false;
+																	}
+																}
+	                                                            if (biData.isEmpty()||flag==false) {
+	                                                                    System.out.println("No data\n");
+	                                                                    continue;
+	                                                            }
 
-                                                                System.out.println("Computer File Data : ");
-                                                                spaces = " ";
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "======================================================================================");
-
-                                                                System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(7) + "%s" +
-                                                                                spaces.repeat(7) + "|"
-                                                                                + spaces.repeat(10) + "%s" +
-                                                                                spaces.repeat(10) + "-"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "-"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "|\n", "No", "Title",
-                                                                                "Author Name", "Date of Birth",
-                                                                                "Country",
-                                                                                "Genre", "File Format", "Date Created",
-                                                                                "File Size");
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "======================================================================================");
-
-                                                                for (int i = 0; i < compData.size(); i++) {
-                                                                        String dOB = null;
-                                                                        String country1 = null;
-
-                                                                        System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        compData.get(i).getTitle());
-                                                                        System.out.printf(
-                                                                                        "%-31s" + "-" + "%-15s" + "-"
-                                                                                                        + "%-15s",
-                                                                                        compData.get(i).getAuthor()
-                                                                                                        .getAuthorName(),
-                                                                                        compData.get(i).getAuthor()
-                                                                                                        .getDateOfBirth(),
-                                                                                        compData.get(i).getAuthor()
-                                                                                                        .getCountry());
-                                                                        System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
-                                                                                        compData.get(i).getSubject(),
-                                                                                        compData.get(i).getFormat(),
-                                                                                        compData.get(i).getDateCreated(),
-                                                                                        compData.get(i).getFileSize());
-                                                                }
-
-                                                                for (int i = 0; i < 2; i++) {
-                                                                        System.out.println();
-                                                                }
+                                                               displayCompf();
 
                                                                 System.out.print(
                                                                                 "Select Computer File Data to Update : ");
                                                                 int up2 = scanner.nextInt();
                                                                 scanner.nextLine();
 
-                                                                if (up2 > 0 && up2 <= compData.size()) {
+                                                                if (up2 > 0 && up2 <= biData.size()) {
                                                                         System.out.println();
                                                                         System.out.println("Computer File Data : ");
 
@@ -729,25 +869,29 @@ public class Main {
                                                                         country = scanner.nextLine();
 
                                                                         int authorIndex = 0;
-                                                                        for (int i = 0; i < authorData.size(); i++) {
-                                                                                if (compData.get(up2 - 1)
-                                                                                                .getAuthor() == authorData
-                                                                                                                .get(i)) {
-                                                                                        authorIndex = i;
-                                                                                }
-                                                                        }
-                                                                        authorData.get(authorIndex)
-                                                                                        .setAuthorName(authorName);
-                                                                        authorData.get(authorIndex).setAuthorName(dob);
-                                                                        authorData.get(authorIndex)
-                                                                                        .setAuthorName(country);
-
-                                                                        ComputerFile updateComp = new ComputerFile(
-                                                                                        title,
-                                                                                        authorData.get(authorIndex),
-                                                                                        subject, dateCreated, format,
-                                                                                        fileSize);
-                                                                        compData.set(up2 - 1, updateComp);
+                                                                        Author updateAuthor = new Author(authorName, dob, country);
+                                                                        BibliographyFactory upBi=new BibliographyFactory();
+                                                                        Bibliography updateBi=upBi.makeComputerFile(title, updateAuthor, subject, dateCreated, format, fileSize);
+                                                                        biData.set(up2-1, updateBi);
+//                                                                        for (int i = 0; i < authorData.size(); i++) {
+//                                                                                if (compData.get(up2 - 1)
+//                                                                                                .getAuthor() == authorData
+//                                                                                                                .get(i)) {
+//                                                                                        authorIndex = i;
+//                                                                                }
+//                                                                        }
+//                                                                        authorData.get(authorIndex)
+//                                                                                        .setAuthorName(authorName);
+//                                                                        authorData.get(authorIndex).setAuthorName(dob);
+//                                                                        authorData.get(authorIndex)
+//                                                                                        .setAuthorName(country);
+//
+//                                                                        ComputerFile updateComp = new ComputerFile(
+//                                                                                        title,
+//                                                                                        authorData.get(authorIndex),
+//                                                                                        subject, dateCreated, format,
+//                                                                                        fileSize);
+//                                                                        compData.set(up2 - 1, updateComp);
 
                                                                         input5 = 4;
                                                                 } else {
@@ -759,73 +903,25 @@ public class Main {
                                                                 break;
 
                                                         case 3:
-                                                                if (artData.isEmpty()) {
-                                                                        System.out.println("No data\n");
-                                                                        continue;
-                                                                }
-                                                                spaces = "";
-                                                                System.out.println("Artwork Data : ");
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "=======================================================================================");
+	                                                        	for (int i = 0; i < biData.size(); i++) {
+																	if(biData.get(i) instanceof Artwork) {
+																		flag=true;
+																		break;
+																	}else {
+																		flag=false;
+																	}
+																}
+	                                                            if (biData.isEmpty()||flag==false) {
+	                                                                    System.out.println("No data\n");
+	                                                                    continue;
+	                                                            }
 
-                                                                System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(7) + "%s" +
-                                                                                spaces.repeat(7) + "|"
-                                                                                + spaces.repeat(10) + "%s" +
-                                                                                spaces.repeat(10) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|\n", "No", "Title",
-                                                                                "Author Name",
-                                                                                "Genre", "Year of Publication",
-                                                                                "Art Type", "Art Style",
-                                                                                "Art Movement");
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "=======================================================================================");
-                                                                for (int i = 0; i < artData.size(); i++) {
-
-                                                                        System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        artData.get(i).getTitle());
-                                                                        System.out.printf(
-                                                                                        "%-31s" + "-" + "%-15s" + "-"
-                                                                                                        + "%-15s",
-                                                                                        artData.get(i).getAuthor()
-                                                                                                        .getAuthorName(),
-                                                                                        artData.get(i).getAuthor()
-                                                                                                        .getDateOfBirth(),
-                                                                                        artData.get(i).getAuthor()
-                                                                                                        .getCountry());
-                                                                        System.out.printf(
-                                                                                        "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
-                                                                                        artData.get(i).getSubject(),
-                                                                                        artData.get(i).getYear(),
-                                                                                        artData.get(i).getArtType(),
-                                                                                        artData.get(i).getArtStyle(),
-                                                                                        artData.get(i).getArtMovement());
-                                                                }
-
-                                                                for (int i = 0; i < 2; i++) {
-                                                                        System.out.println();
-                                                                }
-
+                                                                displayArtwork();
                                                                 System.out.print("Select Art Work Data to Update : ");
                                                                 int up3 = scanner.nextInt();
                                                                 scanner.nextLine();
 
-                                                                if (up3 > 0 && up3 <= artData.size()) {
+                                                                if (up3 > 0 && up3 <= biData.size()) {
                                                                         System.out.println();
                                                                         System.out.println("Art Work Data : ");
 
@@ -860,24 +956,28 @@ public class Main {
                                                                         country = scanner.nextLine();
 
                                                                         int authorIndex = 0;
-                                                                        for (int i = 0; i < authorData.size(); i++) {
-                                                                                if (artData.get(up3 - 1)
-                                                                                                .getAuthor() == authorData
-                                                                                                                .get(i)) {
-                                                                                        authorIndex = i;
-                                                                                }
-                                                                        }
-                                                                        authorData.get(authorIndex)
-                                                                                        .setAuthorName(authorName);
-                                                                        authorData.get(authorIndex).setAuthorName(dob);
-                                                                        authorData.get(authorIndex)
-                                                                                        .setAuthorName(country);
-
-                                                                        Artwork updateArt = new Artwork(title,
-                                                                                        authorData.get(authorIndex),
-                                                                                        subject, year, artType,
-                                                                                        artStyle, artMovement);
-                                                                        artData.set(up3 - 1, updateArt);
+                                                                        Author updateAuthor = new Author(authorName, dob, country);
+                                                                        BibliographyFactory upBi=new BibliographyFactory();
+                                                                        Bibliography updateBi=upBi.makeArtwork(title, updateAuthor, subject, year, artType, artStyle, artMovement);
+                                                                        biData.set(up3-1, updateBi);
+//                                                                        for (int i = 0; i < biData.size(); i++) {
+//                                                                                if (artData.get(up3 - 1)
+//                                                                                                .getAuthor() == authorData
+//                                                                                                                .get(i)) {
+//                                                                                        authorIndex = i;
+//                                                                                }
+//                                                                        }
+//                                                                        authorData.get(authorIndex)
+//                                                                                        .setAuthorName(authorName);
+//                                                                        authorData.get(authorIndex).setAuthorName(dob);
+//                                                                        authorData.get(authorIndex)
+//                                                                                        .setAuthorName(country);
+//
+//                                                                        Artwork updateArt = new Artwork(title,
+//                                                                                        authorData.get(authorIndex),
+//                                                                                        subject, year, artType,
+//                                                                                        artStyle, artMovement);
+//                                                                        artData.set(up3 - 1, updateArt);
 
                                                                         input5 = 4;
                                                                 } else {
@@ -905,195 +1005,19 @@ public class Main {
 
                                                 switch (input4) {
                                                         case 1:
-                                                                String spaces = " ";
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "====================================================================================================");
-
-                                                                System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(7) + "%s" +
-                                                                                spaces.repeat(7) + "|"
-                                                                                + spaces.repeat(10) + "%s" +
-                                                                                spaces.repeat(10) + "-"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "-"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|\n", "No", "Title",
-                                                                                "Author Name", "Date of Birth",
-                                                                                "Country",
-                                                                                "Genre", "Book ID", "Year Publish",
-                                                                                "Publisher",
-                                                                                "Edition", "Page");
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "====================================================================================================");
-                                                                for (int i = 0; i < bookData.size(); i++) {
-
-                                                                        System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        bookData.get(i).getTitle());
-                                                                        System.out.printf(
-                                                                                        "%-31s" + "-" + "%-15s" + "-"
-                                                                                                        + "%-15s",
-                                                                                        bookData.get(i).getAuthor()
-                                                                                                        .getAuthorName(),
-                                                                                        bookData.get(i).getAuthor()
-                                                                                                        .getDateOfBirth(),
-                                                                                        bookData.get(i).getAuthor()
-                                                                                                        .getCountry());
-                                                                        System.out.printf(
-                                                                                        "|%-11s|%-11s|%-16s|%-15s|%-13s|\n",
-                                                                                        bookData.get(i).getSubject(),
-                                                                                        bookData.get(i).getBookID(),
-                                                                                        bookData.get(i).getYearPublish(),
-                                                                                        bookData.get(i).getPublisher(),
-                                                                                        bookData.get(i).getEdition(),
-                                                                                        bookData.get(i).getPage());
-                                                                }
-
-                                                                for (int i = 0; i < 2; i++) {
-                                                                        System.out.println();
-                                                                }
-
+                                                        		
+                                                                displayBook();
+                                                                input4=5;
                                                                 break;
 
                                                         case 2:
-                                                                spaces = " ";
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "======================================================================================");
-
-                                                                System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(7) + "%s" +
-                                                                                spaces.repeat(7) + "|"
-                                                                                + spaces.repeat(10) + "%s" +
-                                                                                spaces.repeat(10) + "-"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "-"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "|\n", "No", "Title",
-                                                                                "Author Name", "Date of Birth",
-                                                                                "Country",
-                                                                                "Genre", "File Format", "Date Created",
-                                                                                "File Size");
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "======================================================================================");
-
-                                                                for (int i = 0; i < compData.size(); i++) {
-
-                                                                        System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        compData.get(i).getTitle());
-                                                                        System.out.printf(
-                                                                                        "%-31s" + "-" + "%-15s" + "-"
-                                                                                                        + "%-15s",
-                                                                                        compData.get(i).getAuthor()
-                                                                                                        .getAuthorName(),
-                                                                                        compData.get(i).getAuthor()
-                                                                                                        .getDateOfBirth(),
-                                                                                        compData.get(i).getAuthor()
-                                                                                                        .getCountry());
-                                                                        System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
-                                                                                        compData.get(i).getSubject(),
-                                                                                        compData.get(i).getFormat(),
-                                                                                        compData.get(i).getDateCreated(),
-                                                                                        compData.get(i).getFileSize());
-                                                                }
-                                                                input4 = 5;
-
-                                                                for (int i = 0; i < 2; i++) {
-                                                                        System.out.println();
-                                                                }
-
+                                                                displayCompf();
+                                                                input4=5;
                                                                 break;
 
                                                         case 3:
-                                                                spaces = " ";
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "=======================================================================================");
-
-                                                                System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(7) + "%s" +
-                                                                                spaces.repeat(7) + "|"
-                                                                                + spaces.repeat(10) + "%s" +
-                                                                                spaces.repeat(10) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|\n", "No", "Title",
-                                                                                "Author Name",
-                                                                                "Genre", "Year of Publication",
-                                                                                "Art Type", "Art Style",
-                                                                                "Art Movement");
-
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "=======================================================================================");
-                                                                for (int i = 0; i < artData.size(); i++) {
-
-                                                                        System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        artData.get(i).getTitle());
-                                                                        System.out.printf(
-                                                                                        "%-31s" + "-" + "%-15s" + "-"
-                                                                                                        + "%-15s",
-                                                                                        artData.get(i).getAuthor()
-                                                                                                        .getAuthorName(),
-                                                                                        artData.get(i).getAuthor()
-                                                                                                        .getDateOfBirth(),
-                                                                                        artData.get(i).getAuthor()
-                                                                                                        .getCountry());
-                                                                        System.out.printf(
-                                                                                        "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
-                                                                                        artData.get(i).getSubject(),
-                                                                                        artData.get(i).getYear(),
-                                                                                        artData.get(i).getArtType(),
-                                                                                        artData.get(i).getArtStyle(),
-                                                                                        artData.get(i).getArtMovement());
-                                                                }
-
-                                                                input4 = 5;
-
-                                                                for (int i = 0; i < 2; i++) {
-                                                                        System.out.println();
-                                                                }
+                                                               displayArtwork();
+                                                               input4=5;
 
                                                                 break;
 
@@ -1103,140 +1027,8 @@ public class Main {
                                         } while (input4 != 4);
 
                                 case 5:
-                                        String spaces = " ";
-
-                                        System.out.println("Book Data : ");
-
-                                        System.out.println(
-                                                        "==============================================================="
-                                                                        +
-                                                                        "====================================================================================================");
-
-                                        System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                        spaces.repeat(2) + "|" + spaces.repeat(7) + "%s" +
-                                                        spaces.repeat(7) + "|" + spaces.repeat(10) + "%s" +
-                                                        spaces.repeat(10) + "-" + spaces.repeat(1) + "%s" +
-                                                        spaces.repeat(1) + "-" + spaces.repeat(4) + "%s" +
-                                                        spaces.repeat(4) + "|" + spaces.repeat(3) + "%s" +
-                                                        spaces.repeat(3) + "|" + spaces.repeat(2) + "%s" +
-                                                        spaces.repeat(2) + "|" + spaces.repeat(2) + "%s" +
-                                                        spaces.repeat(2) + "|" + spaces.repeat(3) + "%s" +
-                                                        spaces.repeat(3) + "|" + spaces.repeat(3) + "%s" +
-                                                        spaces.repeat(3) + "|\n", "No", "Title", "Author Name",
-                                                        "Date of Birth", "Country",
-                                                        "Genre", "Book ID", "Year Publish", "Publisher",
-                                                        "Edition", "Page");
-
-                                        System.out.println(
-                                                        "==============================================================="
-                                                                        +
-                                                                        "====================================================================================================");
-                                        for (int i = 0; i < bookData.size(); i++) {
-
-                                                System.out.printf("|%-6s|%-19s|", i + 1, bookData.get(i).getTitle());
-                                                System.out.printf("%-31s" + "-" + "%-15s" + "-" + "%-15s",
-                                                                bookData.get(i).getAuthor().getAuthorName(),
-                                                                bookData.get(i).getAuthor().getDateOfBirth(),
-                                                                bookData.get(i).getAuthor().getCountry());
-                                                System.out.printf("|%-11s|%-11s|%-16s|%-15s|%-13s|\n",
-                                                                bookData.get(i).getSubject(),
-                                                                bookData.get(i).getBookID(),
-                                                                bookData.get(i).getYearPublish(),
-                                                                bookData.get(i).getPublisher(),
-                                                                bookData.get(i).getEdition(),
-                                                                bookData.get(i).getPage());
-                                        }
-                                        input4 = 5;
-
-                                        for (int i = 0; i < 2; i++) {
-                                                System.out.println();
-                                        }
-
-                                        System.out.println("Computer Files Data : ");
-                                        System.out.println(
-                                                        "==============================================================="
-                                                                        +
-                                                                        "======================================================================================");
-
-                                        System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                        spaces.repeat(2) + "|" + spaces.repeat(7) + "%s" +
-                                                        spaces.repeat(7) + "|" + spaces.repeat(10) + "%s" +
-                                                        spaces.repeat(10) + "-" + spaces.repeat(1) + "%s" +
-                                                        spaces.repeat(1) + "-" + spaces.repeat(4) + "%s" +
-                                                        spaces.repeat(4) + "|" + spaces.repeat(3) + "%s" +
-                                                        spaces.repeat(3) + "|" + spaces.repeat(2) + "%s" +
-                                                        spaces.repeat(2) + "|" + spaces.repeat(2) + "%s" +
-                                                        spaces.repeat(2) + "|" + spaces.repeat(1) + "%s" +
-                                                        spaces.repeat(1) + "|\n", "No", "Title", "Author Name",
-                                                        "Date of Birth", "Country",
-                                                        "Genre", "File Format", "Date Created", "File Size");
-
-                                        System.out.println(
-                                                        "==============================================================="
-                                                                        +
-                                                                        "======================================================================================");
-
-                                        for (int i = 0; i < compData.size(); i++) {
-
-                                                System.out.printf("|%-6s|%-19s|", i + 1, compData.get(i).getTitle());
-                                                System.out.printf("%-31s" + "-" + "%-15s" + "-" + "%-15s",
-                                                                compData.get(i).getAuthor().getAuthorName(),
-                                                                compData.get(i).getAuthor().getDateOfBirth(),
-                                                                compData.get(i).getAuthor().getCountry());
-                                                System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
-                                                                compData.get(i).getSubject(),
-                                                                compData.get(i).getFormat(),
-                                                                compData.get(i).getDateCreated(),
-                                                                compData.get(i).getFileSize());
-                                        }
-                                        input4 = 5;
-
-                                        for (int i = 0; i < 2; i++) {
-                                                System.out.println();
-                                        }
-
-                                        System.out.println("Art Work Data : ");
-                                        System.out.println(
-                                                        "==============================================================="
-                                                                        +
-                                                                        "=======================================================================================");
-
-                                        System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                        spaces.repeat(2) + "|" + spaces.repeat(7) + "%s" +
-                                                        spaces.repeat(7) + "|" + spaces.repeat(10) + "%s" +
-                                                        spaces.repeat(10) + "|" + spaces.repeat(3) + "%s" +
-                                                        spaces.repeat(3) + "|" + spaces.repeat(1) + "%s" +
-                                                        spaces.repeat(1) + "|" + spaces.repeat(4) + "%s" +
-                                                        spaces.repeat(4) + "|" + spaces.repeat(4) + "%s" +
-                                                        spaces.repeat(4) + "|" + spaces.repeat(4) + "%s" +
-                                                        spaces.repeat(4) + "|\n", "No", "Title", "Author Name",
-                                                        "Genre", "Year of Publication", "Art Type", "Art Style",
-                                                        "Art Movement");
-
-                                        System.out.println(
-                                                        "==============================================================="
-                                                                        +
-                                                                        "=======================================================================================");
-                                        for (int i = 0; i < artData.size(); i++) {
-
-                                                System.out.printf("|%-6s|%-19s|", i + 1, artData.get(i).getTitle());
-                                                System.out.printf("%-31s" + "-" + "%-15s" + "-" + "%-15s",
-                                                                artData.get(i).getAuthor().getAuthorName(),
-                                                                artData.get(i).getAuthor().getDateOfBirth(),
-                                                                artData.get(i).getAuthor().getCountry());
-                                                System.out.printf("|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
-                                                                artData.get(i).getSubject(), artData.get(i).getYear(),
-                                                                artData.get(i).getArtType(),
-                                                                artData.get(i).getArtStyle(),
-                                                                artData.get(i).getArtMovement());
-                                        }
-
-                                        input4 = 5;
-
-                                        for (int i = 0; i < 2; i++) {
-                                                System.out.println();
-                                        }
-
+                                       displayAll();
+                                       input4=5;
                                         break;
 
                         }
