@@ -7,7 +7,7 @@ public class ComputerFile extends Bibliography{
 	private String dateCreated;
     private String format;
     private Pdf pdf;
-    public ComputerFile(String title, Author author, String subject, String dateCreated, String format, double fileSize,Pdf pdf){
+    public ComputerFile(String title, Author author, String subject, String dateCreated, String format,Pdf pdf){
         super(title, author, subject);
         this.dateCreated = dateCreated;
         this.format = format;
@@ -24,7 +24,15 @@ public class ComputerFile extends Bibliography{
     
     
     
-    public void setDateCreated(String dateCreated) {
+    public Pdf getPdf() {
+		return pdf;
+	}
+
+	public void setPdf(Pdf pdf) {
+		this.pdf = pdf;
+	}
+
+	public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
