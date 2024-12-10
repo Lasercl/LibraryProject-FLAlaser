@@ -5,12 +5,12 @@ import model.author.Author;
 public abstract class Bibliography {
     private String title;
     private Author author;
-    private String subject;
+    private String genre;
 
-    public Bibliography (String title, Author author, String subject) {
+    public Bibliography (String title, Author author, String genre) {
         this.title = title;
         this.author = author;
-        this.subject = subject;
+        this.genre = genre;
     }
 
     public String getTitle() {
@@ -21,21 +21,21 @@ public abstract class Bibliography {
         return author;
     }
 
-    public String getSubject() {
-        return subject;
-    }
     
+    public String getGenre() {
+		return genre;
+	}
 
-    public void setTitle(String title) {
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public void setTitle(String title) {
         this.title = title;
     }
 
     public void setAuthor(Author author) {
         this.author = author;
-    }
-
-    public void setGenre(String subject) {
-        this.subject = subject;
     }
 }
 

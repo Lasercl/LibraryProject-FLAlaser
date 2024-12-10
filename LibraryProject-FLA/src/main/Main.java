@@ -72,7 +72,7 @@ public class Main {
                     Artwork art=(Artwork) biData.get(i);
                     System.out.printf(
                                     "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
-                                    biData.get(i).getSubject(),
+                                    biData.get(i).getGenre(),
                                     art.getYear(),
                                     art.getArtType(),
                                     art.getArtStyle(),
@@ -137,7 +137,7 @@ public class Main {
                                                        .getCountry());
                        ComputerFile compf1=(ComputerFile) biData.get(i);
                        System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
-                                       biData.get(i).getSubject(),
+                                       biData.get(i).getGenre(),
                                        compf1.getFormat(),
                                        compf1.getDateCreated(),
                                        compf1.getFileSize());
@@ -212,7 +212,7 @@ public class Main {
 
                     System.out.printf(
                                     "|%-11s|%-11s|%-16s|%-15s|%-13s|\n",
-                                    biData.get(i).getSubject(),
+                                    biData.get(i).getGenre(),
                                     book.getBookID(),
                                     book.getYearPublish(),
                                     book.getPublisher(),
@@ -492,7 +492,7 @@ public class Main {
             
                                                                         System.out.printf(
                                                                                         "|%-11s|%-11s|%-16s|%-15s|%-13s|\n",
-                                                                                        biData.get(i).getSubject(),
+                                                                                        biData.get(i).getGenre(),
                                                                                         book.getBookID(),
                                                                                         book.getYearPublish(),
                                                                                         book.getPublisher(),
@@ -589,7 +589,7 @@ public class Main {
                                                                                                         .getCountry());
                                                                         ComputerFile compf1=(ComputerFile) biData.get(i);
                                                                         System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
-                                                                                        biData.get(i).getSubject(),
+                                                                                        biData.get(i).getGenre(),
                                                                                         compf1.getFormat(),
                                                                                         compf1.getDateCreated(),
                                                                                         compf1.getFileSize());
@@ -678,7 +678,7 @@ public class Main {
                                                                         Artwork art=(Artwork) biData.get(i);
                                                                         System.out.printf(
                                                                                         "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
-                                                                                        biData.get(i).getSubject(),
+                                                                                        biData.get(i).getGenre(),
                                                                                         art.getYear(),
                                                                                         art.getArtType(),
                                                                                         art.getArtStyle(),
