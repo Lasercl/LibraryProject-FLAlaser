@@ -6,7 +6,7 @@ import model.bibliography.Bibliography;
 public class ComputerFile extends Bibliography{
 	private String dateCreated;
     private String format;
-    double fileSize;
+//    double fileSize;
     
     private Pdf pdf;
     public ComputerFile(String title, Author author, String subject, String dateCreated, String format, Pdf pdf){
@@ -25,7 +25,7 @@ public class ComputerFile extends Bibliography{
     }
 
 	public double getFileSize() {
-		return fileSize;
+		return this.pdf.getFileSize();
 	}
 
 	public Pdf getPdf() {
@@ -40,9 +40,9 @@ public class ComputerFile extends Bibliography{
 		this.format = format;
 	}
 
-	public void setFileSize(double fileSize) {
-		this.fileSize = fileSize;
-	}
+//	public void setFileSize(double fileSize) {
+//		this.fileSize = fileSize;
+//	}
 
 	public void setPdf(Pdf pdf) {
 		this.pdf = pdf;
