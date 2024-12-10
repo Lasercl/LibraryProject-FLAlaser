@@ -89,10 +89,10 @@ public class Main {
 			   System.out.println("Computer File Data : ");
 			   String spaces = " ";
 
-               System.out.println(
-                               "==============================================================="
-                                               +
-                                               "======================================================================================");
+			   System.out.println(
+                       "================================================================================="
+                                       +
+                                       "======================================================================================");
 
                System.out.printf("|" + spaces.repeat(2) + "%s" +
                                spaces.repeat(2) + "|"
@@ -114,11 +114,11 @@ public class Main {
                                spaces.repeat(1) + "|\n", "No", "Title",
                                "Author Name", "Date of Birth",
                                "Country",
-                               "Genre", "File Format", "Date Created",
-                               "File Size");
+                               "Genre", "File Format (uplouded)", "Date Created",
+                               "File Size (pdf)");
 
                System.out.println(
-                               "==============================================================="
+                               "================================================================================="
                                                +
                                                "======================================================================================");
 
@@ -136,7 +136,7 @@ public class Main {
                                        biData.get(i).getAuthor()
                                                        .getCountry());
                        ComputerFile compf1=(ComputerFile) biData.get(i);
-                       System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
+                       System.out.printf("|%-11s|%-26s|%-16s|%-17s|\n",
                                        biData.get(i).getGenre(),
                                        compf1.getFormat(),
                                        compf1.getDateCreated(),
@@ -542,10 +542,9 @@ public class Main {
                                                                 spaces = " ";
 
                                                                 System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "======================================================================================");
-
+                                                                        "================================================================================="
+                                                                                        +
+                                                                                        "======================================================================================");
                                                                 System.out.printf("|" + spaces.repeat(2) + "%s" +
                                                                                 spaces.repeat(2) + "|"
                                                                                 + spaces.repeat(7) + "%s" +
@@ -566,14 +565,14 @@ public class Main {
                                                                                 spaces.repeat(1) + "|\n", "No", "Title",
                                                                                 "Author Name", "Date of Birth",
                                                                                 "Country",
-                                                                                "Genre", "File Format", "Date Created",
-                                                                                "File Size");
+                                                                                "Genre","File Format (uplouded)", "Date Created",
+                                                                                "File Size (pdf)");
+
 
                                                                 System.out.println(
-                                                                                "==============================================================="
+                                                                                "================================================================================="
                                                                                                 +
                                                                                                 "======================================================================================");
-
                                                                 for (int i = 0; i < biData.size(); i++) {
                                                                 	if(biData.get(i) instanceof ComputerFile) {
                                                                         System.out.printf("|%-6s|%-19s|", i + 1,
@@ -588,7 +587,7 @@ public class Main {
                                                                                         biData.get(i).getAuthor()
                                                                                                         .getCountry());
                                                                         ComputerFile compf1=(ComputerFile) biData.get(i);
-                                                                        System.out.printf("|%-11s|%-15s|%-16s|%-12s|\n",
+                                                                        System.out.printf("|%-11s|%-26s|%-16s|%-17s|\n",
                                                                                         biData.get(i).getGenre(),
                                                                                         compf1.getFormat(),
                                                                                         compf1.getDateCreated(),
