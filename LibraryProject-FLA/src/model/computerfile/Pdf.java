@@ -4,7 +4,7 @@ import model.author.Author;
 
 public class Pdf{
 	
-	double fileSize;
+	private double fileSize;
 	
 	public Pdf(double fileSize) {
 		super();
