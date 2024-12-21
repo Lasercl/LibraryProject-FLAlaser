@@ -27,33 +27,37 @@ public class Main {
 			String spaces = " ";
             System.out.println("Artwork Data : ");
             System.out.println(
-                            "==============================================================="
+                            "======================================================================================="
                                             +
                                             "=======================================================================================");
 
             System.out.printf("|" + spaces.repeat(2) + "%s" +
-                            spaces.repeat(2) + "|"
-                            + spaces.repeat(7) + "%s" +
-                            spaces.repeat(7) + "|"
-                            + spaces.repeat(10) + "%s" +
-                            spaces.repeat(10) + "|"
-                            + spaces.repeat(3) + "%s" +
-                            spaces.repeat(3) + "|"
-                            + spaces.repeat(1) + "%s" +
-                            spaces.repeat(1) + "|"
-                            + spaces.repeat(4) + "%s" +
-                            spaces.repeat(4) + "|"
-                            + spaces.repeat(4) + "%s" +
-                            spaces.repeat(4) + "|"
+                    spaces.repeat(2) + "|"
+                    + spaces.repeat(7) + "%s" +
+                    spaces.repeat(7) + "|"
+                    + spaces.repeat(10) + "%s" +
+                    spaces.repeat(10) + "-"
+                    + spaces.repeat(1) + "%s" +
+                    spaces.repeat(1) + "-"
+                    + spaces.repeat(4) + "%s" +
+                    spaces.repeat(4) + "|"
+                    + spaces.repeat(3) + "%s" +
+                    spaces.repeat(3) + "|"
+                    + spaces.repeat(2) + "%s" +
+                    spaces.repeat(2) + "|"
+                    + spaces.repeat(2) + "%s" +
+                    spaces.repeat(2) + "|"
+                    + spaces.repeat(1) + "%s" +
+                    spaces.repeat(1) + "|"
                             + spaces.repeat(4) + "%s" +
                             spaces.repeat(4) + "|\n", "No", "Title",
-                            "Author Name",
-                            "Genre", "Year of Publication",
+                    "Author Name", "Date of Birth",
+                    "Country","Genre", "Year of Publication",
                             "Art Type", "Art Style",
                             "Art Movement");
 
             System.out.println(
-                            "==============================================================="
+                            "======================================================================================="
                                             +
                                             "=======================================================================================");
             for (int i = 0; i < biData.size(); i++) {
@@ -71,7 +75,7 @@ public class Main {
                                                     .getCountry());
                     Artwork art=(Artwork) biData.get(i);
                     System.out.printf(
-                                    "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
+                                    "|%-11s|%-23s|%-12s|%-11s|%-20s|\n",
                                     biData.get(i).getGenre(),
                                     art.getYear(),
                                     art.getArtType(),
@@ -249,8 +253,15 @@ public class Main {
                         System.out.println("6. Exit");
 
                         System.out.print("Your choice : ");
-                        input = scanner.nextInt();
-                        scanner.nextLine();
+                        input=0;
+                        try {
+							input = scanner.nextInt();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+						}finally {
+							scanner.nextLine();
+
+						}
 
                         System.out.println();
                         System.out.println();
@@ -283,11 +294,17 @@ public class Main {
                                         System.out.println("2. Add New Computer File");
                                         System.out.println("3. Add New Artwork");
                                         System.out.println("4. Back ");
-
+                                        input2=0;
                                         do {
                                                 System.out.print("Insert Type of Bibliography : ");
-                                                input2 = scanner.nextInt();
-                                                scanner.nextLine();
+                                                try {
+													input2 = scanner.nextInt();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
+
+												}
                                         } while (input2 != 1 && input2 != 2 && input2 != 3 && input2 != 4);
 
                                         System.out.println();
@@ -297,23 +314,41 @@ public class Main {
                                                 case 1:
                                                         System.out.print("Insert Book ID : ");
                                                         String bookID = scanner.nextLine();
+                                                        
+                                                        int yearPublish=0;
+											do {
+												System.out.print("Insert Year of Publication : ");
+												try {
+													yearPublish = scanner.nextInt();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
 
-                                                        System.out.print("Insert Year of Publication : ");
-                                                        int yearPublish = scanner.nextInt();
-                                                        scanner.nextLine();
-
-                                                        System.out.print("Insert Publisher : ");
+												}
+											} while (yearPublish==0);
+											System.out.print("Insert Publisher : ");
                                                         String publisher = scanner.nextLine();
 
                                                         System.out.print("Insert Book Edition : ");
                                                         String edition = scanner.nextLine();
-
-                                                        System.out.print("Insert Total Page : ");
-                                                        int page = scanner.nextInt();
-                                                        scanner.nextLine();
                                                         
-                                                        System.out.println("Insert Genre [Romance / Horror / Comedy]:");
-                                                        String genre = scanner.nextLine();
+                                                        int page=0;
+											do {
+												System.out.print("Insert Total Page : ");
+												try {
+													page = scanner.nextInt();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
+												}
+											} while (page==0);
+											String genre="";
+											do {
+												System.out.print("Insert Genre [Romance / Horror / Comedy]: ");
+												genre = scanner.nextLine();
+											} while (!genre.equalsIgnoreCase("Romance")&&!genre.equalsIgnoreCase("Horror")&&!genre.equalsIgnoreCase("Comedy"));
 
                                                         Author insertAuthor = new Author(authorName, dob, country);
 //                                                        Book insertBook = new Book(title, insertAuthor, subject, bookID,
@@ -336,12 +371,23 @@ public class Main {
                                                         System.out.print("Insert Date Modified : ");
                                                         String dateCreated = scanner.nextLine();
 
-                                                        System.out.print("Insert File Format [Word/Pdf]: ");
-                                                        String format = scanner.nextLine();
-
-                                                        System.out.print("Insert File Size : ");
-                                                        double fileSize = scanner.nextDouble();
-                                                        scanner.nextLine();
+											String format;
+											do {
+												System.out.print("Insert File Format [Word/Pdf]: ");
+												format = scanner.nextLine();
+											} while (!format.equalsIgnoreCase("Word")&&!format.equalsIgnoreCase("pdf"));
+                                                       
+                                                        double fileSize=0;
+											do {
+												System.out.print("Insert File Size : ");
+												try {
+													fileSize = scanner.nextDouble();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
+												}
+											} while (fileSize==0);
 
                                                         insertAuthor = new Author(authorName, dob, country);
 //                                                        ComputerFile insertComp = new ComputerFile(title, insertAuthor,
@@ -367,11 +413,19 @@ public class Main {
                                                         break;
 
                                                 case 3:
-                                                        System.out.print("Insert Year Created : ");
-                                                        int year = scanner.nextInt();
-                                                        scanner.nextLine();
+                                                		int year=0;
+											do {
+												System.out.print("Insert Year Created : ");
+												try {
+													year = scanner.nextInt();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
 
-                                                        System.out.print("Insert Type of Art : ");
+												}
+											} while (year==0);
+											System.out.print("Insert Type of Art : ");
                                                         String artType = scanner.nextLine();
 
                                                         System.out.print("Insert Art Style : ");
@@ -410,8 +464,16 @@ public class Main {
                                                                 "1. Delete Book\n2. Delete Computer File\n3. Delete Artwork\n4. Back\n"
                                                                                 +
                                                                                 "Select Delete : ");
-                                                input5 = scanner.nextInt();
-                                                scanner.nextLine();
+                                                input5=0;
+                                                try {
+													input5 = scanner.nextInt();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
+
+													
+												}
 
                                                 System.out.println();
                                                 System.out.println();
@@ -505,9 +567,16 @@ public class Main {
                                                                         System.out.println();
                                                                 }
 
-                                                                System.out.print("Select Book Data to Delete : ");
-                                                                int del1 = scanner.nextInt();
-                                                                scanner.nextLine();
+                                                                int del1=0;
+                                                                System.out.print("Select Book Data to Delete : ");                                            
+																try {
+																	del1 = scanner.nextInt();
+																} catch (Exception e) {
+																	// TODO Auto-generated catch block
+																}finally {
+																	scanner.nextLine();
+
+																}
 
                                                                 if (del1 > 0 && del1 <= biData.size()) {
                                                                         biData.remove(del1 - 1);
@@ -598,11 +667,17 @@ public class Main {
                                                                 for (int i = 0; i < 2; i++) {
                                                                         System.out.println();
                                                                 }
+                                                                
+                                                                int del2=0;
+                                                                System.out.print("Select Computer File Data to Delete : ");
+																try {
+																	del2 = scanner.nextInt();
+																} catch (Exception e) {
+																	// TODO Auto-generated catch block
+																}finally {
+																	scanner.nextLine();
 
-                                                                System.out.print(
-                                                                                "Select Computer File Data to Delete : ");
-                                                                int del2 = scanner.nextInt();
-                                                                scanner.nextLine();
+																}
 
                                                                 if (del2 > 0 && del2 <= biData.size()) {
                                                                         biData.remove(del2 - 1);
@@ -629,69 +704,19 @@ public class Main {
 	                                                                    continue;
 	                                                            }
                                                                 
-                                                                spaces = " ";
-                                                                System.out.println("Artwork Data : ");
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "=======================================================================================");
+                                                               displayArtwork();
+                                                                
+                                                               int del3=0;
+                                                               System.out.print("Select Art Work Data to Delete : ");
+                                                               try {
+																	del3 = scanner.nextInt();
+																} catch (Exception e) {
+																	// TODO Auto-generated catch block
+																}finally {
+																	scanner.nextLine();
 
-                                                                System.out.printf("|" + spaces.repeat(2) + "%s" +
-                                                                                spaces.repeat(2) + "|"
-                                                                                + spaces.repeat(7) + "%s" +
-                                                                                spaces.repeat(7) + "|"
-                                                                                + spaces.repeat(10) + "%s" +
-                                                                                spaces.repeat(10) + "|"
-                                                                                + spaces.repeat(3) + "%s" +
-                                                                                spaces.repeat(3) + "|"
-                                                                                + spaces.repeat(1) + "%s" +
-                                                                                spaces.repeat(1) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|"
-                                                                                + spaces.repeat(4) + "%s" +
-                                                                                spaces.repeat(4) + "|\n", "No", "Title",
-                                                                                "Author Name",
-                                                                                "Genre", "Year of Publication",
-                                                                                "Art Type", "Art Style",
-                                                                                "Art Movement");
+																}
 
-                                                                System.out.println(
-                                                                                "==============================================================="
-                                                                                                +
-                                                                                                "=======================================================================================");
-                                                                for (int i = 0; i < biData.size(); i++) {
-                                                                	if(biData.get(i) instanceof Artwork) {
-                                                                        System.out.printf("|%-6s|%-19s|", i + 1,
-                                                                                        biData.get(i).getTitle());
-                                                                        System.out.printf(
-                                                                                        "%-31s" + "-" + "%-15s" + "-"
-                                                                                                        + "%-15s",
-                                                                                        biData.get(i).getAuthor()
-                                                                                                        .getAuthorName(),
-                                                                                        biData.get(i).getAuthor()
-                                                                                                        .getDateOfBirth(),
-                                                                                        biData.get(i).getAuthor()
-                                                                                                        .getCountry());
-                                                                        Artwork art=(Artwork) biData.get(i);
-                                                                        System.out.printf(
-                                                                                        "|%-11s|%-21s|%-16s|%-17s|%-20s|\n",
-                                                                                        biData.get(i).getGenre(),
-                                                                                        art.getYear(),
-                                                                                        art.getArtType(),
-                                                                                        art.getArtStyle(),
-                                                                                        art.getArtMovement());
-                                                                	}
-                                                                }
-
-                                                                for (int i = 0; i < 2; i++) {
-                                                                        System.out.println();
-                                                                }
-
-                                                                System.out.print("Select Art Work Data to Delete : ");
-                                                                int del3 = scanner.nextInt();
-                                                                scanner.nextLine();
 
                                                                 if (del3 > 0 && del3 <= biData.size()) {
                                                                         biData.remove(del3 - 1);
@@ -715,8 +740,15 @@ public class Main {
                                                                 "1. Update Book\n2. Update Computer File\n3. Update Artwork\n4. Back\n"
                                                                                 +
                                                                                 "Select Update : ");
-                                                input3 = scanner.nextInt();
-                                                scanner.nextLine();
+                                                input3=0;
+                                                try {
+													input3 = scanner.nextInt();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
+
+												}
 
                                                 System.out.println();
                                                 System.out.println();
@@ -738,10 +770,17 @@ public class Main {
 
 //                                                                System.out.println("Book Data : ");
                                                                 displayBook();
-
+                                                                
+                                                                int up1=0;
                                                                 System.out.print("Select Book Data to Update: ");
-                                                                int up1 = scanner.nextInt();
-                                                                scanner.nextLine();
+																try {
+																	up1 = scanner.nextInt();
+																} catch (Exception e) {
+																	// TODO Auto-generated catch block
+																}finally {
+																	scanner.nextLine();
+
+																}
 
                                                                 if (up1 > 0 && up1 <= biData.size()) {
                                                                         System.out.println();
@@ -756,10 +795,18 @@ public class Main {
                                                                         System.out.print("3. Insert Book ID : ");
                                                                         String bookID = scanner.nextLine();
 
-                                                                        System.out.print(
-                                                                                        "4. Insert Year of Publication : ");
-                                                                        int yearPublish = scanner.nextInt();
-                                                                        scanner.nextLine();
+                                                                        int yearPublish=0;
+                            											do {
+                            												System.out.print("4. Insert Year of Publication : ");
+                            												try {
+                            													yearPublish = scanner.nextInt();
+                            												} catch (Exception e) {
+                            													// TODO Auto-generated catch block
+                            												}finally {
+                            													scanner.nextLine();
+
+                            												}
+                            											} while (yearPublish==0);
 
                                                                         System.out.print("5. Insert Publisher : ");
                                                                         String publisher = scanner.nextLine();
@@ -767,8 +814,24 @@ public class Main {
                                                                         System.out.print("6. Insert Book Edition : ");
                                                                         String edition = scanner.nextLine();
 
-                                                                        System.out.print("7. Insert Page : ");
-                                                                        int page = scanner.nextInt();
+                                                                        int page=0;
+																		do {
+																			System.out.print("7. Insert Page : ");
+																			try {
+																				page = scanner.nextInt();
+																			} catch (Exception e) {
+																				// TODO Auto-generated catch block
+																			}finally {
+																				scanner.nextLine();
+																			}
+				
+																		} while (page==0);
+																		String genre="";
+																		do {
+																			System.out.print("8. Insert Genre [Romance / Horror / Comedy]: ");
+																			genre = scanner.nextLine();
+																		} while (!genre.equalsIgnoreCase("Romance")&&!genre.equalsIgnoreCase("Horror")&&!genre.equalsIgnoreCase("Comedy"));
+
 
                                                                         System.out.println();
                                                                         System.out.println("Author Data : ");
@@ -784,7 +847,7 @@ public class Main {
                                                                         int authorIndex = 0;
                                                                         Author updateAuthor = new Author(authorName, dob, country);
                                                                         BibliographyFactory upBi=new BibliographyFactory();
-                                                                        Bibliography updateBi=upBi.makeBook(title, updateAuthor, subject, bookID, yearPublish, publisher, edition, page, edition);
+                                                                        Bibliography updateBi=upBi.makeBook(title, updateAuthor, subject, bookID, yearPublish, publisher, edition, page, genre);
                                                                         biData.set(up1-1, updateBi);
                                                                         
                                                                         
@@ -830,11 +893,17 @@ public class Main {
 	                                                            }
 
                                                                displayCompf();
+                                                               
+                                                               int up2=0;
+                                                                System.out.print("Select Computer File Data to Update : ");
+																try {
+																	up2 = scanner.nextInt();
+																} catch (Exception e) {
+																	// TODO Auto-generated catch block
+																}finally {
+																	scanner.nextLine();
 
-                                                                System.out.print(
-                                                                                "Select Computer File Data to Update : ");
-                                                                int up2 = scanner.nextInt();
-                                                                scanner.nextLine();
+																}
 
                                                                 if (up2 > 0 && up2 <= biData.size()) {
                                                                         System.out.println();
@@ -849,14 +918,26 @@ public class Main {
                                                                         System.out.print("3. Insert Date Created : ");
                                                                         String dateCreated = scanner.nextLine();
 
-                                                                        System.out.print("4. Insert File Format : ");
-                                                                        String format = scanner.nextLine();
+                                                                        String format="";
+																		do {
+																			System.out.print(
+																					"4. Insert File Format [pdf/word]: ");
+																			format = scanner.nextLine();
+																		} while (!format.equalsIgnoreCase("word")&&!format.equalsIgnoreCase("pdf"));
+                                                                       
+                                                                        double fileSize =0;
+                                                                        do {
+																			System.out.print("5. Insert File Size : ");
+																			try {
+																				fileSize = scanner.nextDouble();
+																			} catch (Exception e) {
+																				// TODO Auto-generated catch block
+																			}finally {
+																				scanner.nextLine();
 
-                                                                        System.out.print("5. Insert File Size : ");
-                                                                        double fileSize = scanner.nextDouble();
-                                                                        scanner.nextLine();
-
-                                                                        System.out.println();
+																			}
+																		} while (fileSize==0);
+																		System.out.println();
                                                                         System.out.println("Author Data : ");
                                                                         System.out.print("1. Insert Author Name : ");
                                                                         authorName = scanner.nextLine();
@@ -916,9 +997,17 @@ public class Main {
 	                                                            }
 
                                                                 displayArtwork();
+                                                                
+                                                                int up3=0;
                                                                 System.out.print("Select Art Work Data to Update : ");
-                                                                int up3 = scanner.nextInt();
-                                                                scanner.nextLine();
+                                                                try {
+																	up3 = scanner.nextInt();
+																} catch (Exception e) {
+																	// TODO Auto-generated catch block
+																}finally {
+																	scanner.nextLine();
+
+																}
 
                                                                 if (up3 > 0 && up3 <= biData.size()) {
                                                                         System.out.println();
@@ -929,12 +1018,20 @@ public class Main {
 
                                                                         System.out.print("2. Insert Subject : ");
                                                                         subject = scanner.nextLine();
-
-                                                                        System.out.print("3. Insert Year Created : ");
-                                                                        int year = scanner.nextInt();
-                                                                        scanner.nextLine();
-
-                                                                        System.out.print("4. Insert Type of Art : ");
+                                                                        
+                                                                        int year=0;
+                                                                        do {
+																			System.out
+																					.print("3. Insert Year Created : ");
+																			try {
+																				year = scanner.nextInt();
+																			} catch (Exception e) {
+																				// TODO Auto-generated catch block
+																			}finally {
+																				scanner.nextLine();
+																			}
+																		} while (year==0);
+																		System.out.print("4. Insert Type of Art : ");
                                                                         String artType = scanner.nextLine();
 
                                                                         System.out.print("5. Insert Art Style : ");
@@ -986,8 +1083,10 @@ public class Main {
                                                                 }
 
                                                                 break;
+	                                                        
                                                 }
                                         } while (input3 != 4);
+                                        break;
 
                                 case 4:
                                         do {
@@ -995,8 +1094,15 @@ public class Main {
                                                                 "1. Search by Book Category\n2. Search by Computer File Category\n3. Search by Artwork Category\n"
                                                                                 +
                                                                                 "4. Back\nSelect View : ");
-                                                input4 = scanner.nextInt();
-                                                scanner.nextLine();
+                                                input4=0;
+                                                try {
+													input4 = scanner.nextInt();
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+												}finally {
+													scanner.nextLine();
+
+												}
 
                                                 for (int i = 0; i < 2; i++) {
                                                         System.out.println();
@@ -1024,7 +1130,7 @@ public class Main {
                                                                 break;
                                                 }
                                         } while (input4 != 4);
-
+                                        break;
                                 case 5:
                                        displayAll();
                                        input4=5;
